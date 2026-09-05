@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>Generador de Enlaces BodaCD</title>
+    <title>Generador de Enlaces BodaGL</title>
     <style>
         :root {
             --bg-dark: #050510;
@@ -30,8 +31,8 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(0, 243, 255, 0.15);
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), 
-                        inset 0 0 20px rgba(157, 78, 221, 0.05);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8),
+                inset 0 0 20px rgba(157, 78, 221, 0.05);
             border-radius: 15px;
             padding: 40px;
             width: 100%;
@@ -44,7 +45,9 @@
         .container::before {
             content: '';
             position: absolute;
-            top: 0; left: 10%; right: 10%;
+            top: 0;
+            left: 10%;
+            right: 10%;
             height: 1px;
             background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
             opacity: 0.5;
@@ -140,22 +143,23 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
         <h2>Generador de Pases</h2>
-        
+
         <label>Invitado</label>
         <input type="text" id="nombre" placeholder="Familia Pérez" autocomplete="off">
-        
+
         <label>Total de Pases</label>
         <input type="number" id="pases" placeholder="4" min="1" autocomplete="off">
-        
+
         <label>Mesa Asignada</label>
         <input type="text" id="mesa" placeholder="12" autocomplete="off">
-        
+
         <button onclick="generarEnlace()">Crear Enlace Seguro</button>
-        
+
         <div id="resultado"></div>
     </div>
 
@@ -175,13 +179,13 @@
 
             const raw = nombre + "|" + pases + "|" + mesa;
             let encrypted = "";
-            
+
             for (let i = 0; i < raw.length; i++) {
                 encrypted += String.fromCharCode(raw.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length));
             }
 
             const finalCode = encodeURIComponent(btoa(encrypted));
-            const url = "https://carloscjarquin.github.io/BodaCD/?c=" + finalCode;
+            const url = "https://gustavoleyda-code.github.io/bodagusley/?c=" + finalCode;
 
             document.getElementById("resultado").innerHTML = `
                 <span style="color: #8b9bb4;">Enlace generado:</span><br>
@@ -190,4 +194,5 @@
         }
     </script>
 </body>
+
 </html>
